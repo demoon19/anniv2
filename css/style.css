@@ -1,0 +1,350 @@
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        overflow-x: hidden;
+    }
+
+    .page {
+        display: none;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .page.active {
+        display: flex;
+    }
+
+    /* Halaman 1 - Landing */
+    #page1 {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #page1 h1 {
+        color: white;
+        font-size: 3.5em;
+        margin-bottom: 50px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .button-container {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    button {
+        padding: 15px 40px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+    }
+
+    .btn-yes {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+    }
+
+    .btn-no {
+        background: white;
+        color: #667eea;
+    }
+
+    button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Halaman 2 - Ga Deh */
+    #page2 {
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        flex-direction: column;
+    }
+
+    #page2 h2 {
+        font-size: 3em;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    /* Halaman 3 - Game Puzzle */
+    #page3 {
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        flex-direction: column;
+    }
+
+    .game-container {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .game-container h2 {
+        color: #667eea;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .puzzle {
+        margin: 0px 0;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+    }
+
+    .puzzle-question {
+        font-size: 1.2em;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    .puzzle-image {
+    width: 100%;
+    max-width: 420px;
+    margin: 20px auto;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    background: #f3f3f3;
+    }
+
+    .puzzle-image img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;   /* jaga proporsi, tidak gepeng */
+    display: block;
+    }
+
+    .date-options {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .date-option {
+        padding: 10px;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .date-option:hover {
+        background: #764ba2;
+        transform: translateY(-2px);
+    }
+
+    .lives {
+        text-align: center;
+        font-size: 1.3em;
+        color: #f5576c;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .current-puzzle {
+        text-align: center;
+        color: #667eea;
+        margin-bottom: 15px;
+        font-size: 1.1em;
+    }
+
+    /* Halaman 4 - Selamat */
+    #page4 {
+        background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #page4 h2 {
+        color: white;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal.active {
+        display: flex;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 400px;
+    }
+
+    .modal-content p {
+        font-size: 1.3em;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    /* Halaman 5 - Final */
+    #page5 {
+        position: relative;
+        overflow: hidden;
+        flex-direction: column;
+    }
+
+    .photo-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+        animation: scrollUp 30s linear infinite;
+    }
+
+    @keyframes scrollUp {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(-50%);
+        }
+    }
+
+    .photo-item {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+
+    .final-message {
+        position: relative;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 60px 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    .final-message h1 {
+        color: #667eea;
+        font-size: 3em;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 768px) {
+        #page1 h1 {
+            font-size: 2.5em;
+        }
+        
+        .game-container {
+            padding: 20px;
+        }
+        
+        .photo-background {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .final-message h1 {
+            font-size: 2em;
+        }
+    }
+/* Info bar */
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 12px 18px;
+    background: #f1f3ff;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+/* Wrapper puzzle */
+.puzzle-wrapper {
+    min-height: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Loading text */
+.loading {
+    color: #999;
+    font-size: 1.1em;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .game-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* ===== Confetti ===== */
+#confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 14px;
+    opacity: 0.9;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}

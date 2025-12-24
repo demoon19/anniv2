@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Happy Anniversary</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+/* ===== Background ===== */
+#page1 {
+    position: relative;
+    background: 
+        linear-gradient(
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.35)
+        ),
+        url("assets/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* ===== Karakter ===== */
+.character-wrapper {
+    position: relative;
+    animation: peek 3s ease-in-out infinite;
+}
+
+@keyframes peek {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.character {
+    width: 220px;
+}
+
+/* ===== Papan ===== */
+.board {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 14px 30px;
+    border-radius: 12px;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #764ba2;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== Bubble Chat ===== */
+.chat-bubble {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 14px 50px;
+    border-radius: 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #764ba2;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    animation: talk 12s infinite;
+}
+
+.chat-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 40px;
+    width: 15px;
+    height: 15px;
+    background: white;
+    transform: rotate(45deg);
+}
+
+/* Animasi bicara */
+@keyframes talk {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    25% { opacity: 1; }
+    35% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* Delay bubble */
+.bubble1 { animation-delay: 0s; }
+.bubble2 { animation-delay: 3s; }
+.bubble3 { animation-delay: 6s; }
+.bubble4 { animation-delay: 9s; }
+
+</style>
+</head>
+
+<body>
+
+<div id="page1" class="page active">
+
+    <div class="character-wrapper">
+
+        <!-- Bubble Chat -->
+        <div class="chat-bubble bubble1">Halo sayang! 👋</div>
+        <div class="chat-bubble bubble2">Happy anniversary yang ke-2 yaa! 💕</div>
+        <div class="chat-bubble bubble3">Ini pacarmu titip ucapan ke aku 😆</div>
+        <div class="chat-bubble bubble4">Tolong dibuka yaa 🥺💖</div>
+
+        <!-- Karakter -->
+        <img src="assets/character.png" class="character" alt="character">
+
+        <!-- Papan -->
+        <div class="board">Happy Anniversary 💝</div>
+    </div>
+
+    <div class="button-container">
+        <button class="btn-yes" onclick="goTo('page3.html')">Buka 💕</button>
+        <button class="btn-no" onclick="goTo('page2.html')">Nanti 😝</button>
+    </div>
+
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
